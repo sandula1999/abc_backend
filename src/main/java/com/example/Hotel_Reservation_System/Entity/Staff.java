@@ -20,7 +20,7 @@ public class Staff {
     private String email;
     private String userName;
     private String password;
-    private String role; // E.g., "Manager", "Waiter", etc.
+    private String role;
 
     // Constructors, Getters, and Setters
 }
