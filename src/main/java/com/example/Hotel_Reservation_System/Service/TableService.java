@@ -1,5 +1,6 @@
 package com.example.Hotel_Reservation_System.Service;
 
+import com.example.Hotel_Reservation_System.Entity.ResturantT;
 import com.example.Hotel_Reservation_System.Entity.Table;
 import com.example.Hotel_Reservation_System.Repository.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class TableService {
     @Autowired
     private TableRepository tableRepository;
 
-    public Table addTable(Table table) {
+    public Table addTable(ResturantT table) {
         return tableRepository.save(table);
     }
 

@@ -1,6 +1,6 @@
 package com.example.Hotel_Reservation_System.Controller;
 
-import com.example.Hotel_Reservation_System.Entity.Table;
+import com.example.Hotel_Reservation_System.Entity.ResturantT;
 import com.example.Hotel_Reservation_System.Service.ResourceNotFoundException;
 import com.example.Hotel_Reservation_System.Service.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/tables")
 public class TableController {
 
@@ -18,28 +19,28 @@ public class TableController {
     private TableService tableService;
 
     @PostMapping
-    public ResponseEntity<Table> addTable(@RequestBody Table table) {
-        Table newTable = tableService.addTable(table);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newTable);
+    public ResponseEntity<ResturantT> addTable(@RequestBody ResturantT resturantT) {
+        ResturantT newResturantT = tableService.addTable(resturantT);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newResturantT);
     }
 
     @GetMapping
-    public ResponseEntity<List<Table>> getAllTables() {
-        List<Table> tables = tableService.getAllTables();
-        return ResponseEntity.ok(tables);
+    public ResponseEntity<List<ResturantT>> getAllTables() {
+        List<ResturantT> resturantTS = tableService.getAllTables();
+        return ResponseEntity.ok(resturantTS);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Table> getTableById(@PathVariable Long id) {
-        Table table = tableService.getTableById(id).orElseThrow(() ->
+    public ResponseEntity<ResturantT> getTableById(@PathVariable Long id) {
+        ResturantT resturantT = tableService.getTableById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Table not found with id: " + id));
-        return ResponseEntity.ok(table);
+        return ResponseEntity.ok(resturantT);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Table> updateTable(@PathVariable Long id, @RequestBody Table table) {
-        Table updatedTable = tableService.updateTable(id, table);
-        return ResponseEntity.ok(updatedTable);
+    public ResponseEntity<ResturantT> updateTable(@PathVariable Long id, @RequestBody ResturantT resturantT) {
+        ResturantT updatedResturantT = tableService.updateTable(id, resturantT);
+        return ResponseEntity.ok(updatedResturantT);
     }
 
     @DeleteMapping("/{id}")
